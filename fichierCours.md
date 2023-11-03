@@ -178,3 +178,98 @@ print(inventaire.keys())
 print(inventaire.values())
 # Récupération de la longueur du dictionnaire
 print(len(inventaire))
+
+
+Les list comprehension permettent de faire des déclarations sur une même ligne et de réduire le temps de calculs de python avec des syntaxes courtes
+%%time
+listes = [i**2 for i in range(100000)]
+
+%%time
+dico = {i: i**2 for i in range(20)}
+
+** c'est pour faire l'exponentiel d'un nombre par exemple
+2² (2*2) ou 2*2*2 (2**3)
+
+# Built-in function
+- fonction de bases :
+abs(), round(), max(), min(), len(), sum(), any(), all(),
+round() : C'est pour l'arrondir d'un nombre.
+any() : permet de savoir si un élément est itérable ou pas. Elle s'applique sur les listes, les tuples et les dictionnaires.
+all() : elle permet de déterminer si tous les éléments d'une séquence sont évalués comme true, si tous les éléments sont true elle renvoie true sinon elle renvoie false.
+- conversions de types de variables : 
+int(), str(), float(), type()
+type() : permet de retourner le type de la variable
+- conversions binaires :
+bin(), oct(), hex()
+- fonction : input()
+- fonction : format()
+- fonction : open()
+
+La méthode `seek()` en Python est utilisée pour déplacer le curseur de lecture (ou d'écriture) d'un fichier. Elle permet de positionner le curseur à un emplacement spécifique dans le fichier, ce qui est utile lorsque vous souhaitez lire ou écrire à partir d'une position particulière dans un fichier. La méthode `seek()` prend un ou deux arguments :
+
+```python
+f.seek(offset, whence)
+```
+
+- `offset`: Il s'agit de la position dans le fichier vers laquelle vous souhaitez déplacer le curseur. L'argument `offset` peut être positif (pour avancer dans le fichier) ou négatif (pour reculer dans le fichier). Si `offset` est positif, le curseur avance de `offset` octets à partir de la position spécifiée par `whence`. Si `offset` est négatif, le curseur recule de `offset` octets à partir de la position spécifiée par `whence`.
+
+- `whence` (facultatif) : Il s'agit du point de référence à partir duquel `offset` doit être appliqué. Il peut prendre l'une des valeurs suivantes :
+  - `os.SEEK_SET` (ou 0) : Positionner le curseur à `offset` octets à partir du début du fichier.
+  - `os.SEEK_CUR` (ou 1) : Positionner le curseur à `offset` octets par rapport à la position actuelle du curseur.
+  - `os.SEEK_END` (ou 2) : Positionner le curseur à `offset` octets par rapport à la fin du fichier.
+
+Voici quelques exemples d'utilisation de la méthode `seek()` :
+
+```python
+# Ouvrir un fichier en mode lecture
+with open('mon_fichier.txt', 'r') as f:
+    # Déplacer le curseur à la position 10 (10 octets depuis le début)
+    f.seek(10)
+
+    # Lire les données à partir de cette position
+    data = f.read()
+    print(data)
+```
+
+```python
+# Ouvrir un fichier en mode lecture
+with open('mon_fichier.txt', 'r') as f:
+    # Déplacer le curseur à 10 octets avant la fin du fichier
+    f.seek(-10, os.SEEK_END)
+
+    # Lire les données à partir de cette position
+    data = f.read()
+    print(data)
+```
+
+La méthode `seek()` est utile lorsque vous devez accéder à des parties spécifiques d'un fichier, comme avancer ou reculer dans le fichier pour lire ou écrire des données à partir d'une position donnée.
+
+La méthode `strip()` en Python est utilisée pour supprimer les caractères de début et de fin d'une chaîne de caractères (string). Par défaut, elle supprime les espaces (caractères d'espacement, comme les espaces, les tabulations et les sauts de ligne) du début et de la fin de la chaîne, mais vous pouvez également spécifier un ensemble de caractères personnalisé à supprimer.
+
+Voici comment utiliser la méthode `strip()` :
+
+```python
+texte = "   Ceci est une chaîne avec des espaces.   "
+resultat = texte.strip()
+print(resultat)  # "Ceci est une chaîne avec des espaces."
+```
+
+Comme vous pouvez le voir, la méthode `strip()` a supprimé les espaces du début et de la fin de la chaîne `texte`.
+
+Vous pouvez également spécifier un ensemble de caractères personnalisé à supprimer. Par exemple :
+
+```python
+texte = "??Ceci est une chaîne avec des points d'interrogation??"
+resultat = texte.strip('?')
+print(resultat)  # "Ceci est une chaîne avec des points d'interrogation"
+```
+
+Dans cet exemple, la méthode `strip('?')` a supprimé les points d'interrogation du début et de la fin de la chaîne.
+
+La méthode `strip()` est souvent utilisée pour nettoyer et normaliser les chaînes de caractères en supprimant les espaces ou d'autres caractères non souhaités des bords d'une chaîne. Cela peut être utile lors de la manipulation de données lues à partir de fichiers ou d'entrées utilisateur pour s'assurer que les chaînes sont bien formatées.
+
+
+Les modules en python
+- import module
+- import module as md
+- from module import fonction
