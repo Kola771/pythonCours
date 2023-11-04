@@ -9,7 +9,6 @@ class Conctat:
         self.prenoms = prenoms
         self.phone = phone
         self.adress = adress
-        
 
     def ajouter(self, chemin):
         listes = [self.nom, self.prenoms, self.phone, self.adress]

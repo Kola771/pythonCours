@@ -86,22 +86,50 @@ class ContactManager:
     def updateData(listes, nom, prenoms, chemin):
         x = 0
         y = False
+        stock = False
         with open('myFiles.csv', mode='r', newline='') as fichier_csv:
             reader = csv.reader(fichier_csv)
             donnees = list(reader)
         fichier_csv.close()
+        
         if (all(listes)) :
             for el in range(1, len(donnees)):
-                    # Convertir les chaînes de caractères en minuscules avant la comparaison
-                    if [x.lower() for x in donnees[el][0:2]] == [x.lower() for x in listes[0:2]]:
-                        x += 1
-                        break
+                # Convertir les chaînes de caractères en minuscules avant la comparaison
+                if [x.lower() for x in donnees[el][0:2]] == [x.lower() for x in listes[0:2]]:
+                    x += 1
+                    break
+            
             if x == 0:
                 y = True
             elif x == 1:
                 y = True
             else :
                 y = False
+            
+            if y :
+                # Récupération de l'index de l'élément qu'on veut supprimer
+                for index, el in enumerate(donnees):
+                    if index != 0:
+                        if [x.lower() for x in el[0:2]] == [nom.lower(), prenoms.lower()]:
+                            stock = index
+                if stock != 0 :            
+                    newListe = [data if i != stock else listes for i, data in enumerate(donnees)]
+                
+                    with open(chemin, mode='w', newline='') as fichier_csv:
+                        writer = csv.writer(fichier_csv)
+                        
+                        # Réécrivez l'en-tête en utilisant la première ligne de données
+                        writer.writerow(newListe[0])
+
+                        # Écrivez les données mises à jour sans l'en-tête
+                        writer.writerows(newListe[1:])
+                    fichier_csv.close()  
+                
+                    print ("Contact modifié avec succès !")
+                else :
+                    print ("Modification échouée !!")
+            else :
+                print ("Impossible de faire une modification !!")
                 
         else :
             print ("Une des données que vous entrez est vide")        

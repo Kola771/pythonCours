@@ -1,5 +1,4 @@
-import csv
-from ContactManager import ContactManager
+import re
 from Conctat import Conctat
 
 
@@ -22,8 +21,20 @@ class main:
                     phone = input(
                         "Entrez le numéro de téléphone de votre nouveau contact : ")
                     adress = input("Entrez l'email du contact : ")
-                    myContact = Conctat(nom, prenoms, phone, adress)
-                    myContact.ajouter(chemin)
+                    
+                    # Modèle d'expression régulière pour valider une adresse e-mail
+                    modele_email = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+                    # Utilisation de la fonction search pour trouver une correspondance dans la chaîne
+                    correspondance = re.search(modele_email, adress)
+
+                    # Si une correspondance est trouvée, l'e-mail est valide
+                    if correspondance:
+                        myContact = Conctat(nom, prenoms, phone, adress)
+                        myContact.ajouter(chemin)
+                    else:
+                        print("L'adresse électronique renseigné n'est pas valide !!!")
+
                 # Ajoutez les autres cases ici
                 elif variable == 2:
                     myContact = Conctat()
@@ -39,8 +50,19 @@ class main:
                         "Entrez le nom du contact dont il faut modifier les données : ")
                     prenoms = input(
                         "Entrez le prénom du contact dont il faut modifier les données : ")
-                    myContact = Conctat(nomUp, prenomsUp, phoneUp, adressUp)
-                    myContact.updateData(nom, prenoms, chemin)
+                    
+                    # Modèle d'expression régulière pour valider une adresse e-mail
+                    modele_email = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+                    # Utilisation de la fonction search pour trouver une correspondance dans la chaîne
+                    correspondance = re.search(modele_email, adressUp)
+
+                    # Si une correspondance est trouvée, l'e-mail est valide
+                    if correspondance:
+                        myContact = Conctat(nomUp, prenomsUp, phoneUp, adressUp)
+                        myContact.updateData(nom, prenoms, chemin)
+                    else:
+                        print("L'adresse électronique renseigné n'est pas valide !!!")
                 elif variable == 4:
                     nom = input("Entrez le nom du contact à supprimer : ")
                     prenoms = input(
