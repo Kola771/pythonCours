@@ -78,4 +78,5 @@ class main:
                 print("Vous n'avez pas entré un nombre !!!")
 
 
-n = main()
+if __name__ == "__main__":
+    n = main()
