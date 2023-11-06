@@ -15,3 +15,22 @@ def test_du_signe(valeur):
     print('positif')
 
 test_du_signe(-2)
+
+
+listes = [
+  [1, 2],
+  (0,1),
+  [{
+    "hello": "bonjour"
+  }]
+]
+print(listes)
+# type(listes).__name__
+
+thisdict = {
+  "brand": "Ford",
+  "electric": False,
+  "year": 1964,
+  "colors": ["red", "white", "blue"]
+}
+print(thisdict["colors"][2])

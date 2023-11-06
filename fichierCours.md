@@ -273,3 +273,11 @@ Les modules en python
 - import module
 - import module as md
 - from module import fonction
+
+
+Machine learning
+NUMPY est la librairie qui permet de créer et manipuler des matrices simplement et avec efficacité. En Machine Learning, on insère le plus souvent notre Dataset dans des matrices.
+
+np.zeros((m, n))
+np.ones((m, n))
+le m c'est pour la dimension et le n c'est pour la longueur de chaque données
