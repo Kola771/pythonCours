@@ -33,7 +33,7 @@ print (arran)
 
 print("------------------------------")
 
-# print(test1.shape)
+print(test1.shape)
 
 # test1 = test1.reshape((3,2)) # redimensionne le tableau à 3 lignes et 2 colonnes
 # print (test1)
