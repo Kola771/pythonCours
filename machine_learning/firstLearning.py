@@ -28,12 +28,14 @@ d = np.ones((2, 3), dtype=np.float16) # définit le type et la place à occuper 
 print (d)
 dat = np.linspace(1, 10, 10)
 print (dat)
-arran = np.arange(0, 10, 2)
+arran = np.arange(0, 10)
 print (arran)
 
 print("------------------------------")
 
 print(test1.shape)
+
+print("------------------------------")
 
 # test1 = test1.reshape((3,2)) # redimensionne le tableau à 3 lignes et 2 colonnes
 # print (test1)
@@ -45,3 +47,4 @@ print(variable)
 variable = np.concatenate((test1, test2), axis=1) # axe 1 : équivalent de np.hstack((test1, test2))
 print(variable)
 print(np.ones((1,1)))
+
